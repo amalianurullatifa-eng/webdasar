@@ -30,9 +30,23 @@ class User
 
     $result = $this->conn->query($sql);
 
-    if($result->num_rows == 0){
-        return false;
-    }
-    return true;
-    }
+        if($result->num_rows == 0){
+            if($result->num_rows == 0){
+                return false;
+            }
+                return true;
+            }
+        }
+
+        public function getAllusers()
+        {
+            $sql = "SELECT * FROM $this->table";
+            $result = $this ->conn->query($sql);
+
+            if ($result ->num-rows > 0){
+                return $result;
+            }else{
+                return null;
+            }
+        }
 }
