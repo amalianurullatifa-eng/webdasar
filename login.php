@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require_once("database.php");
@@ -12,11 +11,13 @@ $db = new Database();
 $conn = $db->koneksi();
 $user = new User($conn);
 
+
+
 $ditemukan = $user->login ($username, $password);
 
 if($ditemukan == false){
-    $_SESSION ['pesan_kesalahan']="Login gagal"
-    header ("Location: index.html");
+    $_SESSION ['pesan_kesalahan']="Login gagal";
+    header ("Location: index.php");
     exit;
 }else{
     $_SESSION['is_logged_in'] = true;
@@ -24,10 +25,12 @@ if($ditemukan == false){
     exit;
 }
 
-$_SESSION['is_logged_in'] = true;
-$_SESSION['username'] = $username;
-header("Location: dashboard/index.php");
-exit;
+if($password == $password_valid &&
+    $username == $username_valid)
+
+echo "Selamat Datang" . $username;
+echo "<br/>";
+echo "Password anda" . $password;
 
 //$username_valid = "Amalia";
 //$password_valid = "12345678";
