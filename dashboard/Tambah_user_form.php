@@ -1,3 +1,14 @@
+<?php
+include '../user.php';
+include '../database.php';
+
+$db = new Database();
+$conn = $db->koneksi();
+$user = new User($conn);
+
+$result = $user->getAllUsers();
+$daftar_user = $result->fetch_all(MYSQLI_ASSOC);
+?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <h1 class="mt-4">Tambah User</h1>
           <hr />

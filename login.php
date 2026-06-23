@@ -4,6 +4,8 @@ session_start();
 require_once("database.php");
 require_once("user.php");
 
+if(isset($_POST["input_username"]) && isset($_POST["input_password"])){
+
 $username = $_POST["input_username"];
 $password = $_POST["input_password"];
 
@@ -39,3 +41,4 @@ echo "Password anda" . $password;
 //}else{
 //    echo "Password salah";
 //}
+}
