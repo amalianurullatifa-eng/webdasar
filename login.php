@@ -34,6 +34,17 @@ echo "Selamat Datang" . $username;
 echo "<br/>";
 echo "Password anda" . $password;
 
+if($ditemukan){
+    session_start();
+    $_SESSION['username'] = $username;
+    
+    $sql = "UPDATE user SET jumlah_login = jumlah_login + 1
+            WHERE username='$username'";
+    
+    mysqli_query($conn,$sql);
+    header("Location: dashboard/index.php");
+}
+
 //$username_valid = "Amalia";
 //$password_valid = "12345678";
 //if($password == $password_valid && $username == $username_valid ){

@@ -8,6 +8,13 @@ if(!isset($_SESSION['is_logged_in'])) {
 
 $halaman = $_GET['halaman'] ?? 'daftar_user.php';
 
+$username = $_SESSION['username'];
+$query = mysqli_query($conn,
+"SELECT jumlah_login FROM user WHERE username= '$username'");
+
+$data = mysqli_fetch_assoc($query);
+$login = $data['jumlah_login'];
+
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
